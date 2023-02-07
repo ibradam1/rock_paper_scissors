@@ -102,6 +102,9 @@ function game(){
         } else {
             console.log("It's a tie!");
         }
+
+        //Keep Score
+        console.log("Player score: " + playerScore + "\nComputer score: " + computerScore);
     }
 
     //Decide winner with higher score
@@ -110,8 +113,11 @@ function game(){
     } else if (playerScore < computerScore) {
         console.log("Computer wins!");
     } else {
-        console.log("It's a tie!")
+        console.log("No winner!")
     }
+
+ 
+
 
 
 
