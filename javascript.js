@@ -49,7 +49,37 @@ function getPlayerChoice(){
 
 
 //Determines who wins the round
-function playRound(){
+function playRound(playerChoice, computerChoice){
+    let winner = null;
+
+    if (playerChoice == "Rock"){
+        if (computerChoice == "Rock"){
+            console.log("Tie!");
+        } else if (computerChoice == "Paper"){
+            winner = "Computer"
+        } else if (computerChoice == "Scissors"){
+            winner = "Player";
+        }
+    } else if (playerChoice == "Paper"){
+        if (computerChoice == "Rock"){
+            winner = "Player";
+        } else if (computerChoice == "Paper"){
+            console.log("Tie!");
+        } else if (computerChoice == "Scissors"){
+            winner = "Computer";
+        }
+    } else if (playerChoice == "Scissors"){
+        if (computerChoice == "Rock"){
+            winner = "Computer";
+        } else if (computerChoice == "Paper"){
+            winner = "Player";
+        } else if (computerChoice == "Scissors"){
+            console.log("Tie!");
+        }
+    }
+
+    return winner;
+
 
 }
 
