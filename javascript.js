@@ -21,20 +21,32 @@ function getComputerChoice(){
     }
     
     //Return computer's choice as a string
-    console.log(choice);
+    return choice;
 }
 
-getComputerChoice();
+getPlayerChoice();
 //Inputs player's choice
 function getPlayerChoice(){
+    let choice = undefined;
 
-
+    //Gets player choice and repeats if choice is not valid
+    while (!(choice === "Rock" || choice === "Paper" || choice === "Scissors" || false)){
     //prompt for the player's choice
-    //convert the player's choice to lowercase, then capitalize the first letter.
-    //if the capitalized player's choice is not Rock, Paper, or Scissors, then promt again (repeat the loop)
-    //return the player's choice
+        choice = prompt("Choose Rock, Paper, or Scissors: ");
+        
+
+        //convert the player's choice to lowercase, then capitalize the first letter.
+        choice = choice.toLowerCase();
+        choice = ((choice.substring(0, 1)).toUpperCase()) + (choice.slice(1));
+        
+    }
+        console.log(choice);
+
+
+    return choice;
     
 }
+
 
 //Determines who wins the round
 function playRound(){
