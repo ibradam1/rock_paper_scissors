@@ -1,4 +1,7 @@
 
+game();
+
+
 //Generates random choice for computer
 function getComputerChoice(){
     
@@ -24,7 +27,7 @@ function getComputerChoice(){
     return choice;
 }
 
-getPlayerChoice();
+
 //Inputs player's choice
 function getPlayerChoice(){
     let choice = undefined;
@@ -34,15 +37,11 @@ function getPlayerChoice(){
     //prompt for the player's choice
         choice = prompt("Choose Rock, Paper, or Scissors: ");
         
-
         //convert the player's choice to lowercase, then capitalize the first letter.
         choice = choice.toLowerCase();
         choice = ((choice.substring(0, 1)).toUpperCase()) + (choice.slice(1));
         
     }
-        console.log(choice);
-
-
     return choice;
     
 }
@@ -54,9 +53,9 @@ function playRound(playerChoice, computerChoice){
 
     if (playerChoice == "Rock"){
         if (computerChoice == "Rock"){
-            console.log("Tie!");
+            winner = "Tie";
         } else if (computerChoice == "Paper"){
-            winner = "Computer"
+            winner = "Computer";
         } else if (computerChoice == "Scissors"){
             winner = "Player";
         }
@@ -64,7 +63,7 @@ function playRound(playerChoice, computerChoice){
         if (computerChoice == "Rock"){
             winner = "Player";
         } else if (computerChoice == "Paper"){
-            console.log("Tie!");
+            winner = "Tie";
         } else if (computerChoice == "Scissors"){
             winner = "Computer";
         }
@@ -74,9 +73,11 @@ function playRound(playerChoice, computerChoice){
         } else if (computerChoice == "Paper"){
             winner = "Player";
         } else if (computerChoice == "Scissors"){
-            console.log("Tie!");
+            winner = "Tie"
         }
     }
+
+    console.log("Player Choice: " + playerChoice + "\nComputer Choice: " + computerChoice);
 
     return winner;
 }
@@ -90,12 +91,16 @@ function game(){
     console.log("ROCK PAPER SCISSORS GAME:")
 
     //Play 5 rounds and increment winner's score.
-    for (int i = 0; i < 5; i++){
+    for (let i = 0; i < 5; i++){
         winningPlayer = playRound(getPlayerChoice(), getComputerChoice());
         if (winningPlayer === "Player"){
             playerScore++;
+            console.log("Player wins round!")
         } else if (winningPlayer === "Computer"){
             computerScore++;
+            console.log("Computer wins round!");
+        } else {
+            console.log("It's a tie!");
         }
     }
 
