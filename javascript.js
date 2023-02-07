@@ -79,11 +79,37 @@ function playRound(playerChoice, computerChoice){
     }
 
     return winner;
-
-
 }
 
 function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+    let winningPlayer;
+    
+
+    console.log("ROCK PAPER SCISSORS GAME:")
+
+    //Play 5 rounds and increment winner's score.
+    for (int i = 0; i < 5; i++){
+        winningPlayer = playRound(getPlayerChoice(), getComputerChoice());
+        if (winningPlayer === "Player"){
+            playerScore++;
+        } else if (winningPlayer === "Computer"){
+            computerScore++;
+        }
+    }
+
+    //Decide winner with higher score
+    if (playerScore > computerScore){
+        console.log("Player wins!");
+    } else if (playerScore < computerScore) {
+        console.log("Computer wins!");
+    } else {
+        console.log("It's a tie!")
+    }
+
+
+
 
 }
 
