@@ -6,19 +6,16 @@ const buttons = document.querySelectorAll('.butt');
 //Add event listener for style change on mouseover
 buttons.forEach((button) => {
     button.addEventListener('click', function(e) {
-        console.log(this.id);
         
+        //Play round using button id as player selection
+        playRound(this.id, getComputerChoice());
     });
 
     button.addEventListener('mouseover', () => button.classList.add('moused'));
     button.addEventListener('mouseout', () => button.classList.remove('moused'));
 });
 
-function playerSelection(selection) {
-    if (selection === "rock") {
-        return "Rock";
-    }
-}
+
 
 game();
 
