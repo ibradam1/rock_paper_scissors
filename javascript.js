@@ -1,20 +1,26 @@
 
 //Get buttons into nodeList
-const buttons = document.querySelectorAll('.buttons');
+const buttons = document.querySelectorAll('.butt');
+
+//Add event listener for clicking on button and making choice
+//Add event listener for style change on mouseover
 buttons.forEach((button) => {
-    
+    button.addEventListener('click', function(e) {
+        console.log(this.id);
+        
+    });
 
-})
+    button.addEventListener('mouseover', () => button.classList.add('moused'));
+    button.addEventListener('mouseout', () => button.classList.remove('moused'));
+});
 
-
+function playerSelection(selection) {
+    if (selection === "rock") {
+        return "Rock";
+    }
+}
 
 game();
-
-
-
-
-
-
 
 //Generates random choice for computer
 function getComputerChoice(){

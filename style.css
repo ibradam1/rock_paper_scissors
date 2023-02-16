@@ -39,3 +39,8 @@ body {
     justify-content: space-evenly;
     width: 1000px
 }
+
+.moused {
+    background-color: rgb(124, 89, 161);
+    color: white;
+}   
