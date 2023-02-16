@@ -16,7 +16,8 @@ body {
 }
 
 .game-container {
-    padding: 200px;
+    padding-top: 100px;
+    padding-bottom: 300px;
     background-color: #E3DFFD;
     display: flex;
     justify-content: center;
@@ -26,7 +27,15 @@ body {
     
 }
 
+.resetter {
+    border-style: solid;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 30px;
 
+}
 
 .butt {
     font-size: 40px;
@@ -39,12 +48,19 @@ body {
     border-width: 6px;
     color: rgb(70, 42, 100);
 
+    text-align: center;
+    width: 300px;
+
 }
 
 .score-container {
     background: #E3DFFD;
     width: 1000px;
     height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1, 0, 100px;
     
 }
 .buttons {
@@ -53,17 +69,14 @@ body {
     
 }
 
+
+
 .moused {
     background-color: rgb(124, 89, 161);
     color: white;
 }   
 
-.score-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1, 0, 100px;
-}
+
 
 .header {
     color:rgb(70, 42, 100);

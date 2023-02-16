@@ -114,13 +114,40 @@ function playRound(playerChoice, computerChoice){
     return;
 }
 
-//creates a reset button when final points reached.
+//create a reset button when final points reached.
 function addReset() {
-
+    const resetButton = document.createElement('button');
+    resetButton.classList.add('resetter')
+    resetButton.textContent = "Reset and Play Again";
+    const div = document.querySelector('.score-container');
+    div.appendChild(resetButton);
+    resetButton.addEventListener('click', resetGame);
 }
 
 
-//updates scores and shows in DOM
+//resets game and scores
+function resetGame() {
+
+    const div = document.querySelector('.score-container');
+
+    playerPoints = 0;
+    computerPoints = 0;
+    document.querySelector('.player-score').textContent = "Player Score: 0";
+    document.querySelector('.computer-score').textContent = "Computer Score: 0";
+    document.querySelector('.final').textContent = "";
+    document.querySelector('.player-choice').textContent = "";
+    document.querySelector('.computer-choice').textContent = "";
+    document.querySelector('.round-winner').textContent = "";
+
+    div.removeChild(document.querySelector('.resetter'));
+
+    
+}
+
+
+
+
+//update scores and show in DOM
 function updateScore(winner) {
     if (winner === "Player") {
         playerPoints++;
