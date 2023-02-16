@@ -122,6 +122,8 @@ function addReset() {
     const div = document.querySelector('.score-container');
     div.appendChild(resetButton);
     resetButton.addEventListener('click', resetGame);
+    resetButton.addEventListener('mouseover', () => resetButton.classList.add('moused'));
+    resetButton.addEventListener('mouseout', () => resetButton.classList.remove('moused'));
 }
 
 

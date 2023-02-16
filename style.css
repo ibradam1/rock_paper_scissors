@@ -34,6 +34,9 @@ body {
     padding: 10px;
     text-align: center;
     margin-top: 30px;
+    background-color: #E3DFFD;
+    border-width: 3px;
+    border-color:rgb(70, 42, 100);
 
 }
 
@@ -71,10 +74,6 @@ body {
 
 
 
-.moused {
-    background-color: rgb(124, 89, 161);
-    color: white;
-}   
 
 
 
@@ -131,3 +130,8 @@ body {
     border-width: 6px;
     border-style: solid;
 }
+
+.moused {
+    background-color: rgb(124, 89, 161);
+    color: white;
+}   
