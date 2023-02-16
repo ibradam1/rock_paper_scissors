@@ -1,0 +1,41 @@
+.header {
+    background-color: #ECF2ff;
+    padding: 50px;
+    text-align: center;
+    font-size: 60px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700px;
+    
+}
+
+
+body {
+    background-color: #FFF4D2;
+
+    margin: 0px;
+}
+
+.game-container {
+    padding: 200px;
+    background-color: #E3DFFD;
+    display: flex;
+    justify-content: center;
+}
+
+.butt {
+    font-size: 40px;
+    padding: 60px;
+    border-radius: 30px;
+    border-color: rgb(70, 42, 100);
+    background-color: #E5D1FA;
+    border-style: solid;
+    border-width: 6px;
+    color: rgb(70, 42, 100);
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 1000px
+}

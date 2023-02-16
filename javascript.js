@@ -1,5 +1,19 @@
 
+//Get buttons into nodeList
+const buttons = document.querySelectorAll('.buttons');
+buttons.forEach((button) => {
+    
+
+})
+
+
+
 game();
+
+
+
+
+
 
 
 //Generates random choice for computer
@@ -91,7 +105,7 @@ function game(){
     console.log("ROCK PAPER SCISSORS GAME:")
 
     //Play 5 rounds and increment winner's score.
-    for (let i = 0; i < 5; i++){
+    /*(for (let i = 0; i < 5; i++){
         winningPlayer = playRound(getPlayerChoice(), getComputerChoice());
         if (winningPlayer === "Player"){
             playerScore++;
@@ -105,7 +119,7 @@ function game(){
 
         //Keep Score
         console.log("Player score: " + playerScore + "\nComputer score: " + computerScore);
-    }
+    }*/
 
     //Decide winner with higher score
     if (playerScore > computerScore){
