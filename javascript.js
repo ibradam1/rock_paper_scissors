@@ -1,23 +1,34 @@
+let playerPoints = 0;
+let computerPoints = 0;
 
 //Get buttons into nodeList
 const buttons = document.querySelectorAll('.butt');
 
-//Add event listener for clicking on button and making choice
-//Add event listener for style change on mouseover
-buttons.forEach((button) => {
-    button.addEventListener('click', function(e) {
-        
-        //Play round using button id as player selection
-        playRound(this.id, getComputerChoice());
+
+//gameloop
+function game(){
+    startGame();
+}
+
+
+//Create buttons and play rounds if they are clicked
+function startGame() {
+
+    //Add event listener for clicking on button and making choice
+    //Add event listener for style change on mouseover
+    buttons.forEach((button) => {
+        button.addEventListener('click', function(e) {
+            
+            //Play round using button id as player selection
+            playRound(button.id, getComputerChoice());
+        });
+    
+        button.addEventListener('mouseover', () => button.classList.add('moused'));
+        button.addEventListener('mouseout', () => button.classList.remove('moused'));
     });
-
-    button.addEventListener('mouseover', () => button.classList.add('moused'));
-    button.addEventListener('mouseout', () => button.classList.remove('moused'));
-});
+}
 
 
-
-game();
 
 //Generates random choice for computer
 function getComputerChoice(){
@@ -45,99 +56,98 @@ function getComputerChoice(){
 }
 
 
-//Inputs player's choice
-function getPlayerChoice(){
-    let choice = undefined;
-
-    //Gets player choice and repeats if choice is not valid
-    while (!(choice === "Rock" || choice === "Paper" || choice === "Scissors" || false)){
-    //prompt for the player's choice
-        choice = prompt("Choose Rock, Paper, or Scissors: ");
-        
-        //convert the player's choice to lowercase, then capitalize the first letter.
-        choice = choice.toLowerCase();
-        choice = ((choice.substring(0, 1)).toUpperCase()) + (choice.slice(1));
-        
-    }
-    return choice;
-    
-}
-
 
 //Determines who wins the round
 function playRound(playerChoice, computerChoice){
-    let winner = null;
 
-    if (playerChoice == "Rock"){
-        if (computerChoice == "Rock"){
-            winner = "Tie";
-        } else if (computerChoice == "Paper"){
-            winner = "Computer";
-        } else if (computerChoice == "Scissors"){
-            winner = "Player";
+    //play a round if no player has 5 points yet
+    if (playerPoints < 5 && computerPoints < 5) {
+        let winner = null;
+
+        if (playerChoice == "Rock"){
+            if (computerChoice == "Rock"){
+                winner = "Tie";
+            } else if (computerChoice == "Paper"){
+                winner = "Computer";
+            } else if (computerChoice == "Scissors"){
+                winner = "Player";
+            }
+        } else if (playerChoice == "Paper"){
+            if (computerChoice == "Rock"){
+                winner = "Player";
+            } else if (computerChoice == "Paper"){
+                winner = "Tie";
+            } else if (computerChoice == "Scissors"){
+                winner = "Computer";
+            }
+        } else if (playerChoice == "Scissors"){
+            if (computerChoice == "Rock"){
+                winner = "Computer";
+            } else if (computerChoice == "Paper"){
+                winner = "Player";
+            } else if (computerChoice == "Scissors"){
+                winner = "Tie";
+            }
         }
-    } else if (playerChoice == "Paper"){
-        if (computerChoice == "Rock"){
-            winner = "Player";
-        } else if (computerChoice == "Paper"){
-            winner = "Tie";
-        } else if (computerChoice == "Scissors"){
-            winner = "Computer";
-        }
-    } else if (playerChoice == "Scissors"){
-        if (computerChoice == "Rock"){
-            winner = "Computer";
-        } else if (computerChoice == "Paper"){
-            winner = "Player";
-        } else if (computerChoice == "Scissors"){
-            winner = "Tie"
-        }
+
+        //Update choices and winner in scoring section
+        const player = document.querySelector('.player-choice');
+        const computer = document.querySelector('.computer-choice');
+        const roundWinner = document.querySelector('.round-winner');
+        
+        player.textContent = "Player choice: " + playerChoice;
+        computer.textContent = "Computer choice: " + computerChoice;
+        roundWinner.textContent = "Winner of round: " + winner;
+        
+        updateScore(winner);
+
+
+    //Call final when point limit is reached  
+    if (playerPoints == 5 || computerPoints == 5) {
+        finalWinner();
+        addReset();
     }
 
-    console.log("Player Choice: " + playerChoice + "\nComputer Choice: " + computerChoice);
-
-    return winner;
-}
-
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    let winningPlayer;
+    }
     
 
-    console.log("ROCK PAPER SCISSORS GAME:")
+    return;
+}
 
-    //Play 5 rounds and increment winner's score.
-    /*(for (let i = 0; i < 5; i++){
-        winningPlayer = playRound(getPlayerChoice(), getComputerChoice());
-        if (winningPlayer === "Player"){
-            playerScore++;
-            console.log("Player wins round!")
-        } else if (winningPlayer === "Computer"){
-            computerScore++;
-            console.log("Computer wins round!");
-        } else {
-            console.log("It's a tie!");
-        }
-
-        //Keep Score
-        console.log("Player score: " + playerScore + "\nComputer score: " + computerScore);
-    }*/
-
-    //Decide winner with higher score
-    if (playerScore > computerScore){
-        console.log("Player wins!");
-    } else if (playerScore < computerScore) {
-        console.log("Computer wins!");
-    } else {
-        console.log("No winner!")
-    }
-
- 
-
-
-
-
+//creates a reset button when final points reached.
+function addReset() {
 
 }
 
+
+//updates scores and shows in DOM
+function updateScore(winner) {
+    if (winner === "Player") {
+        playerPoints++;
+        document.querySelector('.player-score').textContent = `Player Score: ${playerPoints}`;
+    } else if (winner === "Computer") {
+        computerPoints++;
+        document.querySelector('.computer-score').textContent = `Computer Score: ${computerPoints}`;
+    }
+
+
+
+
+
+    return;
+
+}
+
+function finalWinner() {
+    if (playerPoints > computerPoints){
+        document.querySelector('.final').textContent = "You win!";
+    } else if (playerPoints < computerPoints) {
+        document.querySelector('.final').textContent = "Computer wins!";
+    }
+
+    return;
+}
+
+
+
+game();
